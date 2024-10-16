@@ -5,7 +5,14 @@ let age = 28;
 console.log('私のニックネームは' + nickname + 'です。年齢は' + age +'です。');
 
 // Q2 配列
-let languages = ['JavaScript','PHP','Ruby','Python','Go'];
+let languages = [
+  'JavaScript',
+  'PHP',
+  'Ruby',
+  'Python',
+  'Go'
+];
+
 let templateLiteral = `私の好きな言語は${languages[0]}です。次は${languages[3]}を勉強してみたいです。`;
 
 console.log(templateLiteral);
@@ -42,8 +49,11 @@ let playerList = [
 console.log(playerList[1].favorites[1]);
 
 //Q5 四則演算
-let ageTotal = playerList[0].age + playerList[1].age + playerList[2].age;
-let ageAverage = ageTotal / 3;
+let ageTotal = 0;
+playerList.forEach(function(user) {
+  ageTotal += user.age;
+});
+let ageAverage = ageTotal / playerList.length;
 
 console.log(ageAverage);
 
@@ -67,23 +77,19 @@ user.sayHello();
 let calc = {};
 
 calc.add = function(x,y) {
-  let total = x + y;
-  console.log(total);
+  console.log(x + y);
 }
 
 calc.subtract = function(x,y) {
-  let total = x - y;
-  console.log(total);
+  console.log(x - y);
 }
 
 calc.multiply = function(x,y) {
-  let total = x * y;
-  console.log(total);
+  console.log(x * y);
 }
 
 calc.devide = function(x,y) {
-  let total = x / y;
-  console.log(total);
+  console.log(x / y);
 }
 
 calc.add(3,4);
@@ -94,9 +100,9 @@ calc.devide(15,3);
 //Q9 返り値
 function remainder(x,y) {
   let number = x % y;
-  let message = x + 'を' + y + 'で割った数は' + number + 'です。'
+  let message = x + 'を' + y + 'で割った数は' + number + 'です。';
   console.log(message);
-  return console.log;
+  return number;
 }
 
 remainder(5,3);
@@ -113,21 +119,19 @@ remainder(5,3);
 //未定義という扱いになります。
 
 //応用 Q1 標準組み込みオブジェクト
-
 let num = Math.floor(Math.random() * 10); //floorで小数点以下切り捨て
 console.log(num);
 
 //応用 Q2 コールバック関数
-
 setTimeout(function(){console.log('Hello World!')}, 3000);
 // setTimeout (() => {
 //   console.log('Hello World!');
-// }, 3000) ; 
-//上記コメントアウトでもできる。 
+// }, 3000) ;
+//上記コメントアウトでもできる。
 //setRimeout(関数もしくはコード,時間)※時間は文字列は読み込まない為、数値を与える。1ミリ秒単位の為、1秒は1000となる。
 
 //応用　Q3
-function sorting(num) {
+function sort(num) {
   if (num > 0) {
     console.log('num is greater than 0');
   } else if (num < 0 ) {
@@ -136,14 +140,15 @@ function sorting(num) {
     console.log('num is 0')
   }
 }
-num = Math.floor(Math.random() * 10 - 4);
-sorting(num);
+let randomAdjust = 4
+num = Math.floor(Math.random() * 10 - randomAdjust);
+sort(num);
 
 //応用 Q4 for
 let numbers = [];
 
 for (let i = 0; i < 100; i++) {
-  numbers[i]= i;
+  numbers[i] = i;
 }
 console.log(numbers);
 
