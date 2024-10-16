@@ -10,7 +10,7 @@ let languages = [
   'PHP',
   'Ruby',
   'Python',
-  'Go'
+  'Go',
 ];
 
 let templateLiteral = `私の好きな言語は${languages[0]}です。次は${languages[3]}を勉強してみたいです。`;
@@ -100,18 +100,18 @@ calc.devide(15,3);
 //Q9 返り値
 function remainder(x,y) {
   let number = x % y;
-  let message = x + 'を' + y + 'で割った数は' + number + 'です。';
-  console.log(message);
   return number;
 }
-
-remainder(5,3);
+let x1 = 5;
+let y1 = 3;
+console.log(x1 + 'を' + y1 + 'で割った数は' + remainder(x1,y1) + 'です。');
 
 //Q10 スコープ
-// function foo() {
-//   let x = 1;
-// }
-// console.log(x);
+function foo() {
+  let x = 1;
+  return x;
+}
+console.log(foo());
 
 //関数foo内で定義された変数xはローカル変数なので
 //関数内ではスコープの有効範囲の為、参照されますが
@@ -123,6 +123,7 @@ let num = Math.floor(Math.random() * 10); //floorで小数点以下切り捨て
 console.log(num);
 
 //応用 Q2 コールバック関数
+
 setTimeout(function(){console.log('Hello World!')}, 3000);
 // setTimeout (() => {
 //   console.log('Hello World!');
@@ -130,19 +131,30 @@ setTimeout(function(){console.log('Hello World!')}, 3000);
 //上記コメントアウトでもできる。
 //setRimeout(関数もしくはコード,時間)※時間は文字列は読み込まない為、数値を与える。1ミリ秒単位の為、1秒は1000となる。
 
+function setTimeout2(callback){
+  callback();
+}
+
+setTimeout2(function(){
+  console.log('Hello World!');
+});
+
 //応用　Q3
 function sort(num) {
   if (num > 0) {
     console.log('num is greater than 0');
   } else if (num < 0 ) {
     console.log('num is less than 0')
-  } else {
+  } else if (num === 0){
     console.log('num is 0')
   }
 }
 let randomAdjust = 4
 num = Math.floor(Math.random() * 10 - randomAdjust);
 sort(num);
+sort(0);
+sort(-1);
+sort(1);
 
 //応用 Q4 for
 let numbers = [];
